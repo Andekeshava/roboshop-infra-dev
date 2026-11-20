@@ -308,7 +308,7 @@ resource "aws_vpc_security_group_ingress_rule" "frontend_alb_public_https" {
 resource "aws_vpc_security_group_ingress_rule" "bastion_my_laptop" {
   security_group_id = local.bastion_sg_id # destination, where you are creating the rule
 
-  cidr_ipv4   = chomp(data.http.my_ipv4.response_body)  # source, where is traffic coming from
+  cidr_ipv4   = "${chomp(data.http.my_ipv4.response_body)}/32"  # source, where is traffic coming from
   from_port   = 22
   ip_protocol = "tcp"
   to_port     = 22

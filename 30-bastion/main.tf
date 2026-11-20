@@ -3,7 +3,10 @@ resource "aws_instance" "example"{
     instance_type = "t3.micro"
     subnet_id = local.public_subnet_ids
     vpc_security_group_ids = local.bastion_sg_id
+    iam_instance_profile = aws_iam_instance_profile.bastion.name
 
+    
+    # I am running terraform commands from this instance, so it needs more disk space to be extended
     root_block_device {
       volume_type = "gp3"
       volume_size = 50
