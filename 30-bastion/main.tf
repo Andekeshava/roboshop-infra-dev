@@ -1,14 +1,15 @@
-resource "aws_instance" "example" {
+resource "aws_instance" "bastion" {
     ami = local.ami_id
     instance_type = "t3.micro"
     subnet_id = local.public_subnet_ids
     vpc_security_group_ids = [local.bastion_sg_id]
     iam_instance_profile = aws_iam_instance_profile.bastion.name
 
-    user_data = templatefile("${path.module}/bastion.sh.tftpl.tftpl", {
+    user_data = templatefile("${path.module}/bastion.sh.tftpl", {
     partition_number = 4
     extra_disk_size = 20
   })
+  user_data_replace_on_change = true
 
     # I am running terraform commands from this instance, so it needs more disk space to be extended
     root_block_device {
