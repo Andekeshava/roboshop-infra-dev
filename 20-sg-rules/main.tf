@@ -313,3 +313,4 @@ resource "aws_vpc_security_group_ingress_rule" "bastion_my_laptop" {
   ip_protocol = "tcp"
   to_port     = 22
 }
+

@@ -6,6 +6,6 @@ locals {
         project = var.project
         environment = var.environment
         terraform = true
-        name = "${var.project}-${var.environment}-bastion"
+        Name = "${var.project}-${var.environment}-bastion"
     }
 }
