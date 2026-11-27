@@ -32,24 +32,24 @@ resource "aws_vpc_security_group_ingress_rule" "redis_user" {
     security_group_id = local.redis_sg_id#destination, where you are creating the rule
 
     referenced_security_group_id = local.user_sg_id  #source, from where the traffic coming from
-    from_port = 22
+    from_port = 6379
     ip_protocol = "tcp"
-    to_port = 22
+    to_port = 6379
 }
 
 resource "aws_vpc_security_group_ingress_rule" "redis_cart" {
     security_group_id = local.redis_sg_id  #destination, where you are creating the rule
 
     referenced_security_group_id = local.cart_sg_id #source, from where the traffic coming from
-    from_port = 22
+    from_port = 6379
     ip_protocol = "tcp"
-    to_port = 22
+    to_port = 6379
 }
 
 resource "aws_vpc_security_group_ingress_rule" "redis_bastion" {
     security_group_id = local.redis_sg_id  #destination, where you are creating the rule
 
-    referenced_security_group_id = local.redis_sg_id  #source, from where the traffic coming from
+    referenced_security_group_id = local.bastion_sg_id  #source, from where the traffic coming from
     from_port = 22
     ip_protocol = "tcp"
     to_port = 22
