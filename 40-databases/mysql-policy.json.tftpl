@@ -4,8 +4,8 @@
         {
             "Sid": "VisualEditor0",
             "Effect": "Allow",
-            "Action": "ssm:GetParameters",
-            "Resource": "arn:aws:ssm:us-east-1:298363283580:parameter/${project}/${environment}/mysql_root_password"
+            "Action": "ssm:GetParameter",
+            "Resource": "arn:aws:ssm:us-east-1:${account_id}:parameter/${project}/${environment}/mysql_root_password"
         },
         {
             "Sid": "VisualEditor1",
