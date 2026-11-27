@@ -47,7 +47,7 @@ resource "aws_instance" "redis" {
 
 resource "terraform_data" "redis" {
   triggers_replace = [
-    aws_instance.mongodb.id
+    aws_instance.redis.id
   ]
 
   connection {
