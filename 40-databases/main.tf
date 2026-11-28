@@ -29,7 +29,6 @@ resource "terraform_data" "bootstrap" {
       "sudo sh /tmp/bootstrap.sh mongodb ${var.environment}"
      ]
   }
-
 }
 
 resource "aws_instance" "redis" {

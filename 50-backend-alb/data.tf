@@ -1,3 +1,23 @@
+data "aws_ami" "joindevops" {
+  most_recent = true
+  owners      = ["973714476881"]
+
+  filter {
+    name   = "name"
+    values = ["Redhat-9-DevOps-Practice"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  filter {
+    name   = "state"
+    values = ["available"]
+  }
+}
+
 data "aws_ssm_parameter" "backend_alb_sg_id" {
   name = "/${var.project}/${var.environment}/backend_alb_sg_id"
 }
